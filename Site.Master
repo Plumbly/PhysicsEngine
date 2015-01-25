@@ -1,0 +1,26 @@
+﻿<%@ Master Language="VB" AutoEventWireup="true" CodeBehind="Site.master.vb" Inherits="PhysicsEngine.SiteMaster" %>
+<%@ Import Namespace="PhysicsEngine" %>
+<%@ Import Namespace="Microsoft.AspNet.Identity" %>
+<!DOCTYPE html>
+
+<html lang="en">
+
+<body>
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>               
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+            </Scripts>
+        </asp:ScriptManager>        
+    </form>
+    <canvas id="physicsCanvas" style="width: 1500px; height: 900px; border: #000 1pt solid"></canvas>    
+    
+    
+    <script src="Scripts/PhysicsBrowser.js" type="text/javascript"></script>
+    <script src="Scripts/Environment.js" type="text/javascript"></script>
+    <script src="Scripts/EngineObjects.js" type="text/javascript"></script>
+
+</body>
+</html>
