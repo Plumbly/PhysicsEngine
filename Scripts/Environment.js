@@ -1,18 +1,26 @@
 ﻿var objectContainer = new Array();
+var timeElapsed = 0;
+var time;
+
+
+
 function PhysicsEnvironment() {
     this.initialise = function () {
         objectContainer.push(new Square(750, 500, 100, 100, "black"));
         objectContainer.push(new Square(500, 500, 100, 100, "red"));
+        time = new Date().getSeconds();
         render();
     }
 
     function updateObjectPositions() {
         for (var i = 0, length = objectContainer.length; i < length; i++) {
             var object = objectContainer[i];
-            if ((object.y + object.height) < canvas.height)
-            {
-                object.y += 2;
+            if (mouseDownLocationX > object.x && mouseDownLocationX < object.x + object.width && mouseDownLocationY > object.y && mouseDownLocationY < object.y + object.height && grabbedObject == -1) {
+                grabbedObject = i;
+                object.updateVelocity(0, 0);
             }
+            
+            object.resolveVelocity();         
         }
     }
 
@@ -27,11 +35,19 @@ function PhysicsEnvironment() {
     }
 
     function render() {
+        timeElapsed = new Date().getSeconds() - time;
+        time = new Date().getSeconds();
+
+        //clear the canvas
         context.clearRect(0, 0, canvas.width, canvas.height);
+        //Update Object Positions
         updateObjectPositions();
+        //Render all the objects
         drawObjects();
         requestAnimationFrame(render);        
     }
 }
+
+
 
 
