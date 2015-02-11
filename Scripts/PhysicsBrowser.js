@@ -35,7 +35,8 @@ function doMouseMove(event) {
         objectContainer[grabbedObject].updatePosition(mouseTravelx, mouseTravely);
     }
     mouseX = event.offsetX;
-    mouseY = event.offsetY;        
+    mouseY = event.offsetY;
+    worker.postMessage(objectContainer);
 }
 function doMouseDown(event) {
     mouseButton = event.which || event.button;

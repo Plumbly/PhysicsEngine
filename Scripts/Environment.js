@@ -1,14 +1,32 @@
 ﻿var objectContainer = new Array();
 var timeElapsed = 0;
 var time;
-
+var worker;
 
 
 function PhysicsEnvironment() {
     this.initialise = function () {
-        objectContainer.push(new Square(750, 500, 100, 100, "black"));
-        objectContainer.push(new Square(500, 500, 100, 100, "red"));
+        objectContainer.push(new Square(750, 500, 100, 100, "green"));
+        objectContainer.push(new Square(500, 500, 100, 100, "green"));
+        objectContainer.push(new Square(750, 500, 100, 100, "green"));
+        objectContainer.push(new Square(500, 500, 100, 100, "green"));
+        objectContainer.push(new Square(750, 500, 100, 100, "green"));
+        objectContainer.push(new Square(500, 500, 100, 100, "green"));
+        objectContainer.push(new Square(750, 500, 100, 100, "green"));
+        objectContainer.push(new Square(500, 500, 100, 100, "green"));
         time = new Date().getSeconds();
+        worker = new Worker('../Scripts/CollisionDetecter.js');
+        worker.postMessage(objectContainer);
+        worker.addEventListener('message', function (e) {
+            switch(e.data.cmd)
+            {
+                case "Collision":
+                    objectContainer[e.data.index].colour = "red";
+                    break;
+                case "No Collision":
+                    objectContainer[e.data.index].colour = "green";
+            }
+        }, false);
         render();
     }
 
@@ -22,6 +40,7 @@ function PhysicsEnvironment() {
             
             object.resolveVelocity();         
         }
+        worker.postMessage(objectContainer);
     }
 
 
