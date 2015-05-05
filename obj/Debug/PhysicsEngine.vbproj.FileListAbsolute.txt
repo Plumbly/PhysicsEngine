@@ -52,3 +52,33 @@ c:\users\jplumbly\documents\visual studio 2013\Projects\PhysicsEngine\PhysicsEng
 c:\users\jplumbly\documents\visual studio 2013\Projects\PhysicsEngine\PhysicsEngine\obj\Debug\PhysicsEngine.dll
 c:\users\jplumbly\documents\visual studio 2013\Projects\PhysicsEngine\PhysicsEngine\obj\Debug\WebForms_Basic.xml
 c:\users\jplumbly\documents\visual studio 2013\Projects\PhysicsEngine\PhysicsEngine\obj\Debug\PhysicsEngine.pdb
+C:\Users\josh.plumbly\Documents\Documents\My Projects\PhysicsEngine\bin\PhysicsEngine.dll.config
+C:\Users\josh.plumbly\Documents\Documents\My Projects\PhysicsEngine\bin\PhysicsEngine.dll
+C:\Users\josh.plumbly\Documents\Documents\My Projects\PhysicsEngine\bin\PhysicsEngine.pdb
+C:\Users\josh.plumbly\Documents\Documents\My Projects\PhysicsEngine\bin\WebForms_Basic.xml
+C:\Users\josh.plumbly\Documents\Documents\My Projects\PhysicsEngine\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\josh.plumbly\Documents\Documents\My Projects\PhysicsEngine\bin\Newtonsoft.Json.dll
+C:\Users\josh.plumbly\Documents\Documents\My Projects\PhysicsEngine\bin\Microsoft.Web.Infrastructure.xml
+C:\Users\josh.plumbly\Documents\Documents\My Projects\PhysicsEngine\bin\System.Web.Optimization.xml
+C:\Users\josh.plumbly\Documents\Documents\My Projects\PhysicsEngine\bin\Antlr3.Runtime.pdb
+C:\Users\josh.plumbly\Documents\Documents\My Projects\PhysicsEngine\bin\Microsoft.AspNet.FriendlyUrls.xml
+C:\Users\josh.plumbly\Documents\Documents\My Projects\PhysicsEngine\bin\EntityFramework.xml
+C:\Users\josh.plumbly\Documents\Documents\My Projects\PhysicsEngine\bin\EntityFramework.SqlServer.xml
+C:\Users\josh.plumbly\Documents\Documents\My Projects\PhysicsEngine\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\josh.plumbly\Documents\Documents\My Projects\PhysicsEngine\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\josh.plumbly\Documents\Documents\My Projects\PhysicsEngine\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\josh.plumbly\Documents\Documents\My Projects\PhysicsEngine\bin\Microsoft.Owin.xml
+C:\Users\josh.plumbly\Documents\Documents\My Projects\PhysicsEngine\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\josh.plumbly\Documents\Documents\My Projects\PhysicsEngine\bin\Microsoft.Owin.Security.xml
+C:\Users\josh.plumbly\Documents\Documents\My Projects\PhysicsEngine\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\josh.plumbly\Documents\Documents\My Projects\PhysicsEngine\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\josh.plumbly\Documents\Documents\My Projects\PhysicsEngine\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\josh.plumbly\Documents\Documents\My Projects\PhysicsEngine\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\josh.plumbly\Documents\Documents\My Projects\PhysicsEngine\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\josh.plumbly\Documents\Documents\My Projects\PhysicsEngine\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\josh.plumbly\Documents\Documents\My Projects\PhysicsEngine\obj\Debug\PhysicsEngine.vbprojResolveAssemblyReference.cache
+C:\Users\josh.plumbly\Documents\Documents\My Projects\PhysicsEngine\obj\Debug\PhysicsEngine.Resources.resources
+C:\Users\josh.plumbly\Documents\Documents\My Projects\PhysicsEngine\obj\Debug\PhysicsEngine.vbproj.GenerateResource.Cache
+C:\Users\josh.plumbly\Documents\Documents\My Projects\PhysicsEngine\obj\Debug\PhysicsEngine.dll
+C:\Users\josh.plumbly\Documents\Documents\My Projects\PhysicsEngine\obj\Debug\WebForms_Basic.xml
+C:\Users\josh.plumbly\Documents\Documents\My Projects\PhysicsEngine\obj\Debug\PhysicsEngine.pdb

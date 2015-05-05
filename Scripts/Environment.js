@@ -3,31 +3,43 @@ var timeElapsed = 0;
 var time;
 var worker;
 
+var bounds = []
+
 
 function PhysicsEnvironment() {
     this.initialise = function () {
+
         objectContainer.push(new Square(750, 500, 100, 100, "green"));
         objectContainer.push(new Square(500, 500, 100, 100, "green"));
-        objectContainer.push(new Square(750, 500, 100, 100, "green"));
-        objectContainer.push(new Square(500, 500, 100, 100, "green"));
-        objectContainer.push(new Square(750, 500, 100, 100, "green"));
-        objectContainer.push(new Square(500, 500, 100, 100, "green"));
-        objectContainer.push(new Square(750, 500, 100, 100, "green"));
-        objectContainer.push(new Square(500, 500, 100, 100, "green"));
+        //objectContainer.push(new Square(750, 500, 100, 100, "green"));
+        //objectContainer.push(new Square(500, 500, 100, 100, "green"));
+        //objectContainer.push(new Square(750, 500, 100, 100, "green"));
+        //objectContainer.push(new Square(500, 500, 100, 100, "green"));
+        //objectContainer.push(new Square(750, 500, 100, 100, "green"));
+        //objectContainer.push(new Square(500, 500, 100, 100, "green"));
+
+        bounds = [0, 0, canvas.width, canvas.height];
+
         time = new Date().getSeconds();
+
         worker = new Worker('../Scripts/CollisionDetecter.js');
-        worker.postMessage(objectContainer);
-        worker.addEventListener('message', function (e) {
-            switch(e.data.cmd)
-            {
-                case "Collision":
-                    objectContainer[e.data.index].colour = "red";
-                    break;
-                case "No Collision":
-                    objectContainer[e.data.index].colour = "green";
-            }
-        }, false);
-        render();
+        worker.addEventListener('message', function (e) { workerReceiveMessage(e) }, false);
+
+        gameLoop();
+    }
+
+    function workerReceiveMessage(e){
+        switch(e.data.cmd)
+        {
+            case "Collision":
+                objectContainer[e.data.c1Index].colour = "red";
+                objectContainer[e.data.c2Index].colour = "red";
+                objectContainer[e.data.c1Index].updateVelocity(e.data.c1Dxdy[0], e.data.c1Dxdy[1]);
+                objectContainer[e.data.c2Index].updateVelocity(e.data.c2Dxdy[0], e.data.c2Dxdy[1]);
+                break;
+            case "No Collision":
+                objectContainer[e.data.index].colour = "green";
+        }
     }
 
     function updateObjectPositions() {
@@ -40,7 +52,7 @@ function PhysicsEnvironment() {
             
             object.resolveVelocity();         
         }
-        worker.postMessage(objectContainer);
+        worker.postMessage({ objects: objectContainer, bounds: bounds });
     }
 
 
@@ -53,17 +65,24 @@ function PhysicsEnvironment() {
         }
     }
 
-    function render() {
+    function gameLoop() {
         timeElapsed = new Date().getSeconds() - time;
         time = new Date().getSeconds();
 
-        //clear the canvas
-        context.clearRect(0, 0, canvas.width, canvas.height);
         //Update Object Positions
         updateObjectPositions();
+        
+        render();
+
+        requestAnimationFrame(gameLoop);        
+    }
+
+    function render() {
+        //clear the canvas
+        context.clearRect(0, 0, canvas.width, canvas.height);
+
         //Render all the objects
         drawObjects();
-        requestAnimationFrame(render);        
     }
 }
 
