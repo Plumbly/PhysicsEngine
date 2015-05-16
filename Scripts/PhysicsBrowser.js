@@ -36,7 +36,6 @@ function doMouseMove(event) {
     }
     mouseX = event.offsetX;
     mouseY = event.offsetY;
-    worker.postMessage({objects: objectContainer, bounds: bounds});
 }
 function doMouseDown(event) {
     mouseButton = event.which || event.button;
