@@ -1,8 +1,8 @@
-﻿function Shape(x,y, colour)
+﻿function Shape(x,y, colour, mass, restitution)
 {
     //Physical Properties
-    this.mass = 0.5;
-    this.restitution = 1.0;
+    this.mass = mass;
+    this.restitution = restitution;
     this.colour = colour;
 
     //Current Position
@@ -31,8 +31,8 @@ Shape.prototype.resolveVelocity = function()
 }
 
 
-function Square(x, y, width, height, colour) {
-    this.parent.constructor.call(this, x, y, colour);
+function Square(x, y, width, height, colour, mass, restitution) {
+    this.parent.constructor.call(this, x, y, colour, mass, restitution);
     this.width = width;
     this.height = height;
     this.grabbed = false;
@@ -52,8 +52,8 @@ Square.prototype.checkHit = function () {
     return (mouseDownLocationX > this.x && mouseDownLocationX < this.x + this.width && mouseDownLocationY > this.y && mouseDownLocationY < this.y + this.height);
 }
 
-function Circle(x, y, radius, colour) {
-    this.parent.constructor.call(this, x, y, colour);
+function Circle(x, y, radius, colour,mass, restitution) {
+    this.parent.constructor.call(this, x, y, colour, mass, restitution);
     this.radius = radius;
     this.grabbed = false;
 }

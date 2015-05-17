@@ -38,7 +38,7 @@ function detectCollisions() {
                 var collisionPointY = ((object1.y * object2.radius) + (object2.y * object1.radius)) / (object1.radius + object2.radius);
                 collisionPoints.push([collisionPointX, collisionPointY])
 
-                //resolveImpulses(i, j);
+                resolveImpulses(i, j);
             }
 
         }
@@ -49,41 +49,59 @@ function resolveImpulses(i, j) {
     var object1 = objectContainer[i];
     var object2 = objectContainer[j];
 
-    //var relative_velocity;
+    var relative_velocity = [object1.vx - object2.vx, object1.vy - object2.vy];
 
-    //var dot_product = (object1.vx * object2.vx) + (object1.vy + object2.vy);
-    
+    var n = [object1.x - object2.x, object1.y - object2.y];
 
-    //var dx1 = minRestitution * object1.vx;
-    //var dx2 = minRestitution * object2.vx;
-    //var dy1 = minRestitution * object1.vy;
-    //var dy2 = minRestitution * object2.vy;
 
-    //var dxdy1 = [0, 0];
-    //var dxdy2 = [0, 0];
+    var vectorlength = Math.sqrt(Math.pow(n[0], 2) + Math.pow(n[1], 2));
 
-    var dx = object1.vx - object2.vx;
-    var dy = object1.vy - object2.vy;
+    var x = n[0] / vectorlength;
+    var y = n[1] / vectorlength;
+
+    var dot_productnorm1 = (relative_velocity[0] * x) + (relative_velocity[1] * y);
+
+    if (dot_productnorm1 > 0) {
+        return;
+    }
 
     var e = Math.min(object1.restitution, object2.restitution);
 
-    var normal = (Math.pow(dx, 2) + Math.pow(dy, 2));
-    var normalx = dx/normal;
-    var normaly = dy/normal;
+    var j = -(1 + e) * dot_productnorm1
+    j /= 1 / object1.mass + 1 / object2.mass;
 
-    var dot1 = (dx * normalx) + (dy * normaly);
+    // Apply impulse
+    var impulse = [j * x, j * y];
 
-        var j = -(1 + e) * dot1;
-        j /= (1 / object1.mass) + (1 / object2.mass);
+    object1.vx += (1 / object1.mass * impulse[0]);
+    object1.vy += (1 / object1.mass * impulse[1]);
 
-        var impulsex = j * normalx;
-        var impulsey = j * normaly;
+    object2.vx -= (1 / object2.mass * impulse[0]);
+    object2.vy -= (1 / object2.mass * impulse[1]);
 
-        object1.vx -= 1 / object1.mass * impulsex;
-        object1.vy -= 1 / object1.mass * impulsey;
+    //var x = n[0] / vectorlength;
+    //var y = n[1] / vectorlength;
 
-        object2.vx -= 1 / object2.mass * impulsex;
-        object2.vy += 1 / object2.mass * impulsey;
+    //var cpx = [-y, x];
+
+    //var dot_productnorm1= (object1.vx * x) + (object1.vy * y);
+    //var dot_productnorm2 = (object2.vx * x) + (object2.vy * y);
+
+    //var n_vel1_after = ((dot_productnorm1 * (object1.mass - object2.mass)) + (2 * object2.mass * dot_productnorm2)) / (object2.mass + object1.mass);
+    //var n_vel2_after = ((dot_productnorm2 * (object2.mass - object1.mass)) + (2 * object1.mass * dot_productnorm1)) / (object2.mass + object1.mass);
+
+    //// Convert the scalers to vectors by multiplying by the normalised plane vectors.
+    //var vec_n_vel2_after = [n_vel2_after * x, n_vel2_after * y];
+    //var vec_n_vel1_after = [n_vel1_after * x, n_vel1_after * y];
+
+    //object1.vx -= vec_n_vel1_after[0];
+    //object1.vy -= vec_n_vel1_after[1];
+
+    //object2.vx += vec_n_vel2_after[0];
+    //object2.vy += vec_n_vel2_after[1];
+
+
+    
 
     
     
